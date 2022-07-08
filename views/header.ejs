@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks | <%=kindofList%></title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="https://kit.fontawesome.com/39a0385b22.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="opacity">
+
+    </div>
+    <div class="delete-modal" id="delModal">
+        <form action="/deletelist" method="post">
+            <h2>Delete List</h2>
+            <p>"<%= kindofList %>" will be permanently deleted.</p>
+            <div class="button-group">
+                <button type="submit" name="deleteListButton" value="<%= kindofList %>" id="delete">Delete</button>
+                <button type="button" id="cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+
+        <div class="left-box">
+            <div class="brand">
+                <h1>SMART TO-DO</h1>
+                <a href="/about">About</a>
+            </div>
+            <hr>
+            <div class="list-wrapper">
+                <div class="list">
+                    <a href="/">Today <em style="color: grey;">(Default)</em></a>
+                </div>
+                <div class="list">
+                    <% listsNames.forEach((list) => { %>
+                        <a href="/<%= list.name %>"> <%= list.name %></a>
+                    <%})%>
+                </div>
+            </div>
+            
+            <div class="search">
+                <form action="/addlist" method="post">
+                    <input type="text" placeholder=" + Add/Search a list" name="addlist" required>
+                    <button type="submit" name="">Go</button>
+                </form>
+                
+            </div>
+        </div> 
+
+
+
+        <div class="right-box">
+            <div class="upper-box">
+                <h1><%= kindofList %></h1>
+                <button  class="<%= kindofList %>" id="deleteListButton">🗑</button>
+            </div>
+
+   
+    
+    

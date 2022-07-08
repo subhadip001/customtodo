@@ -1,0 +1,388 @@
+*{
+  font-family: 'helvetica neue';
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+::after , ::before{
+  box-sizing: border-box;
+}
+html{
+  min-height: 100vh;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  color:#fff;
+  font-size: 2.3rem;
+}
+
+.upper-box .Today , .About {
+  visibility: hidden;
+}
+
+.lower-box h2{
+  color: rgb(72, 72, 72);
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+
+.delete-modal{
+  display:none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 100;
+  animation: fadein;
+  animation-duration: 500ms;
+}
+
+@keyframes fadein {
+  from{
+    top: 45%;
+    opacity: 0;
+  }
+  to{
+    top:50%;
+    opacity: 1;
+  }
+}
+.show-modal{
+  display: block;
+}
+.delete-modal form{
+  background-color: #ffffff;
+  min-width: 200px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 3px solid #ffffff;
+  border-radius: 4px;
+}
+.delete-modal form p{
+  margin: 5px 0 35px 0 ;
+}
+.delete-modal form .button-group{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.button-group button{
+  display: block;
+  width: 40%;
+  height: 100%;
+  padding: 4px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #bfbfbf;
+  background-color: #fff;
+}  
+.button-group button:hover{
+  box-shadow: 0 0 10px 1px rgb(193, 193, 193);
+}
+
+.button-group button:nth-child(1){
+  border: none;
+  background-color: #ff2b2bf3;
+  color: #fff;
+}
+/* ----------------------------------------------------all box styles---------------------------------------------------------- */
+
+.container{
+  display:grid;
+  height : 100vh;
+  grid-template-columns : 1fr 1fr 1fr 1fr;
+  grid-template-areas: "left right right right";
+}
+.left-box{
+  background-color: #e0e0e0;
+  grid-area: left;
+  position: relative;
+}
+.left-box .brand{
+  display: block;
+  width: 100%;
+  margin:10px auto;
+  text-decoration: none;
+  color: black;
+}
+.brand h1 {
+  display: block;
+  width: 88%;
+  margin: auto;
+  
+}
+hr{
+  display: block;
+  width: 88%;
+  margin:10px auto;
+  border: none;
+  border-bottom:1px solid #a7a7a7;
+}
+.brand h1{
+  color: #49494998;
+}
+.left-box .list-wrapper{
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+  height: 70vh;
+  overflow-y: scroll;
+}
+.list-wrapper .list{
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+.left-box a{
+  display: block;
+  width: 90%;
+  margin: 1px auto;
+  text-decoration: none;
+  padding: 10px;
+  color: rgb(16, 16, 16);
+}
+
+.list-wrapper .list a:hover
+,.brand a:hover
+{
+  background-color: #c9c9c9eb;
+}
+
+.left-box .search{
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+}
+.search form{
+  display: flex;
+  width: 90%;
+  margin: 40px auto;
+  justify-content: center;
+  align-items: center;
+  gap: 33px;
+}
+.search input{
+  display: block;
+  width: 75%;
+}
+.search input[type="text"]{
+  padding: 5px 10px;
+  height: 42px;
+  background-color: #f4f4f4c1;
+  outline: none;
+  border: none;
+}
+.search button{
+  display: block;
+  height: 41px;
+  width: 41px;
+  border-radius: 4px;
+  background-color: #f4f4f4c1;
+  outline: none;
+  border: none;
+}
+
+
+
+.right-box{
+  position: relative;
+  background-image: url("leaves.jpeg");
+  grid-area: right;
+}
+.upper-box{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  margin: 20px auto;
+  padding: 35px 0;
+}
+.upper-box h1{
+  position: absolute;
+  left: 0;
+}
+.upper-box button{
+  right: 0;
+  position: absolute;
+  font-size: 1.7rem;
+  border: none;
+  height: 2.3rem;
+  width: 2.3rem;
+  text-align: center;
+  background: #e7e7e7da;
+  border-radius: 4px;
+  color: #00204a;
+}
+.upper-box button:hover{
+  color: #fff;
+  background: rgba(255, 51, 51, 0.826);
+}
+.upper-box button::before{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  content: "Delete List";
+  font-size: 50%;
+  font-weight: 100;
+  color: #3c526d;
+  line-height: 1;
+  height: 30px;
+  width: 90px;
+  color: #fff;
+  background-color: #121212;
+  border: 1px solid #fff;
+  animation: visible;
+  animation-duration: 5s;
+}
+.upper-box button:hover::before{
+  display: flex;
+}
+@keyframes visible{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.task-wrapper{
+  display: block;
+  height: 60vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.task-wrapper::-webkit-scrollbar 
+,.left-box .list-wrapper::-webkit-scrollbar{
+  display: none;
+}
+
+.task-item{
+  height: 48px;
+  display: flex;
+  align-items: center;
+  background-color: #f4f4f4e7;
+  width: 85%;
+  margin: 4px auto;
+  border-radius: 4px;
+}
+.task-item:hover{
+  background-color: #ffff;
+}
+
+input:checked+p {
+  text-decoration: line-through;
+  text-decoration-color: #A683E3;
+}
+
+input[type="checkbox"] {
+  margin: 20px 5px 20px 20px;
+  
+}
+
+.lower-box p {
+  margin: 0;
+  padding: 20px;
+  font-size: 1.25rem;
+  font-weight: 200;
+  color: #00204a;
+}
+
+
+.lower-box .submit-form{
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  top: 38rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.lower-box button {
+  height: 2.9rem;
+  width: 2.9rem;
+  border-radius: 4px;
+  background-color: #e7e7e7da;
+  color: rgb(36, 36, 36);
+  font-size: 2rem;
+  border: none;
+  text-align: center;
+  
+}
+
+
+.lower-box input[type="text"] {
+  /* text-align: center; */
+  height: 48px;
+  background-color: #e7e7e7da;
+  font-size: 17px;
+  font-weight: 200;
+  width: 100%;
+  transition: all  0.5s;
+  border-radius: 4px;
+  border: 1px solid #9a71e2;
+  padding: 15px;
+  outline: none;
+
+  /* margin: 0 auto; */
+  
+}
+.lower-box input[type="text"]:hover
+,.lower-box input[type="text"]:focus
+,.lower-box button:hover
+,.search button:hover
+,.search input[type="text"]:hover
+,.search input[type="text"]:focus{
+  background-color: #fff;
+}
+
+::placeholder {
+  color: rgb(73, 73, 73);
+  opacity: 1;
+}
+
+.about-box{
+  background-color: #e7e7e7da;
+  display: block;
+  width: 85%;
+  margin: 5px auto;
+  padding: 20px;
+  border-radius: 4px;
+}
+.about-box h2{
+  color: rgb(48, 48, 48);
+  margin-bottom: 20px;
+}
+footer {
+  margin: 5rem auto 1rem auto;
+  color: white;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  
+}
+.opacity{
+  position: absolute;
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background: #000;
+  opacity: 0.5;
+  transition: all 500ms;
+  z-index: 10;
+}
